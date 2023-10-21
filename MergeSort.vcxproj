@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Files.cpp" />
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Files.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="sort.h" />
