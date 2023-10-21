@@ -24,22 +24,22 @@
     <ClCompile Include="sort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Files.cpp">
+    <ClCompile Include="files.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="interface.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="main.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="files.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sort.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Files.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
