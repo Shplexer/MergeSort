@@ -4,7 +4,7 @@
 vector<double>& inputFromFile(vector<double>& vec) {
 	bool isCorrect = false;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl
-		 << "Данные в файле должны быть представлены в виде ********************" << endl;
+		 << "Данные в файле должны быть представлены в виде, например: '-5 34 7 18' " << endl;
 	while (true) {
 		string fileName = OpenFile();
 		//size = CalculateSize(fileName);
