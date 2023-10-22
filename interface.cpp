@@ -8,9 +8,9 @@ template<typename T>
 T checkInput() {
 	T userInput{};
 	while (!(cin >> userInput)) {
-		cin.clear();											//discard err flag
-		cin.ignore(INT_MAX, '\n');								//clear buffer for INT_MAX characters or until '\n'
-		cout << "ERR. Wrong input, try again" << endl;
+		cin.clear();											//Сброс флага ошибки
+		cin.ignore(INT_MAX, '\n');								//Очистка буффера на колличество символов, равное INT_MAX, или до '\n'
+		cout << "Ошибка. Введёно некорректное значение, попробуйте снова" << endl;
 	}
 	cin.ignore(INT_MAX, '\n');
 	return userInput;
@@ -27,18 +27,21 @@ double inputDouble() {
 }
 
 //Приветственное меню
-//TODO: ЛОКАЛИЗИРОВАТЬ
 void giveWelcomeMenu() {
-	cout	<< "temporary Welcome  msg" << endl; //поменять потом
-	cout	<< "1. Start" << endl
-				<< "2. Test" << endl
-				<< "3. Exit" << endl
+	cout	<< "Добро пожаловать в программу! " << endl
+				<< "Название: Лаборотоная N№ 2" << endl
+				<< "Выполнили: Беликов Илья, Орехов Даниил, Лешуков Никита" << endl
+				<< "Пожалуйста, выберите один вариантов, предстваленных ниже, и наберите соответствующую цифру:" << endl;
+	cout	<< "1. Начать работу" << endl
+				<< "2. Запустить тест программы" << endl
+				<< "3. Выйти из программы" << endl
 				<< "> ";
 }
 
 std::vector<double>fillArrayManual() {
 	std::vector<double>arr;
-	cout << "size: " << endl << "> ";
+	cout << "Введите размер: " << endl
+		 << "> ";
 	int	size = inputInt();
 	for (int i = 0; i < size; i++) {
 		double input = inputDouble();
@@ -52,12 +55,15 @@ std::vector<double>fillArrayRandom() {
 	std::vector<double>arr;
 	double lowestRandomNumber = 0;
 	double highestRandomNumber = 0;
-	cout << "size: " << endl << "> ";
+	cout << "Укажите размер: " << endl
+		 << "> ";
 	int	size = inputInt();
-	cout << "lowest" << endl << "> ";
+	cout << "Укажите минимально допустимое число: " << endl
+		 << "> ";
 	lowestRandomNumber = inputDouble();
 	do {
-		cout << "Enter highest random number: " << endl;
+		cout << "Укажите максимально допустимое число: " << endl
+			 << "> ";
 		highestRandomNumber = inputDouble();
 	} while (highestRandomNumber < lowestRandomNumber);
 	
