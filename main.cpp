@@ -19,13 +19,14 @@ int main() {
 			break;
 		case welcomeMenuChoice::exit:
 
-			exitFlag = true;
+			std::exit(0);
 			break;
 		default:
 			std::cout << "cringe" << std::endl;
 			break;
 		}
 	}
+	std::vector<double>unsortedArr = arrayFillMethodMenu();
 
 	return 0;
 }

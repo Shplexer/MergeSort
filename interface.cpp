@@ -1,8 +1,8 @@
 #include "interface.h"
+#include "sort.h"
+#include "files.h"
 
-
-
-//Шаблон для проверки типа ввода
+//РЁР°Р±Р»РѕРЅ РґР»СЏ РїСЂРѕРІРµСЂРєРё С‚РёРїР° РІРІРѕРґР°
 template<typename T>
 T checkInput() {
 	T userInput{};
@@ -15,27 +15,27 @@ T checkInput() {
 	return userInput;
 }
 
-//Функция для ввода чисел
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° С‡РёСЃРµР»
 int inputInt() {
 	return checkInput<int>();
 }
 
-//Функция для ввода дробных чисел
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° РґСЂРѕР±РЅС‹С… С‡РёСЃРµР»
 double inputDouble() {
 	return checkInput<double>();
 }
 
-//Приветственное меню
-//TODO: ЛОКАЛИЗИРОВАТЬ
+//РџСЂРёРІРµС‚СЃС‚РІРµРЅРЅРѕРµ РјРµРЅСЋ
+//TODO: Р›РћРљРђР›РР—РР РћР’РђРўР¬
 void giveWelcomeMenu() {
-	std::cout	<< "Welcome temporary msg" << std::endl; //поменять потом
+	std::cout	<< "Welcome temporary msg" << std::endl; //РїРѕРјРµРЅСЏС‚СЊ РїРѕС‚РѕРј
 	std::cout	<< "1. Start" << std::endl
 				<< "2. Test" << std::endl
 				<< "3. Exit" << std::endl
 				<< "> ";
 }
 
-std::vector<double> fillArr() {
+std::vector<double>fillArrayManual() {
 	std::vector<double>arr;
 	std::cout << "size: " << std::endl << "> ";
 	int	size = inputInt();
@@ -43,5 +43,37 @@ std::vector<double> fillArr() {
 		double input = inputDouble();
 		arr.push_back(input);
 	}
+
 	return arr;
+}
+
+std::vector<double>fillArrayRandom() {
+	std::vector<double>arr;
+	int lowestRandomNumber = 0;
+	int highestRandomNumber = 0;
+	std::cout << "size: " << std::endl << "> ";
+	int	size = inputInt();
+	std::cout << "lowest" << std::endl << "> ";
+	lowestRandomNumber = inputDouble();
+	do {
+		std::cout << "Enter highest random number: " << std::endl;
+		highestRandomNumber = inputDouble();
+	} while (highestRandomNumber < lowestRandomNumber);
+	int range = (highestRandomNumber - lowestRandomNumber) + 1;
+
+	srand(static_cast<double>(time(NULL)));
+
+	for (int i = 0; i < size; i++) {
+		double input = lowestRandomNumber + rand() % range;
+		arr.push_back(input);
+	}
+
+	return arr;
+}
+
+
+//РњРµРЅСЋ РІС‹Р±РѕСЂР° Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР°
+std::vector<double> arrayFillMethodMenu() {
+
+
 }
