@@ -1,6 +1,7 @@
 #include "interface.h"
 #include "sort.h"
 #include "files.h"
+#include "main.h"
 
 //Шаблон для проверки типа ввода
 template<typename T>
@@ -28,16 +29,16 @@ double inputDouble() {
 //Приветственное меню
 //TODO: ЛОКАЛИЗИРОВАТЬ
 void giveWelcomeMenu() {
-	std::cout	<< "Welcome temporary msg" << std::endl; //поменять потом
-	std::cout	<< "1. Start" << std::endl
-				<< "2. Test" << std::endl
-				<< "3. Exit" << std::endl
+	cout	<< "temporary Welcome  msg" << endl; //поменять потом
+	cout	<< "1. Start" << endl
+				<< "2. Test" << endl
+				<< "3. Exit" << endl
 				<< "> ";
 }
 
 std::vector<double>fillArrayManual() {
 	std::vector<double>arr;
-	std::cout << "size: " << std::endl << "> ";
+	cout << "size: " << endl << "> ";
 	int	size = inputInt();
 	for (int i = 0; i < size; i++) {
 		double input = inputDouble();
@@ -49,23 +50,22 @@ std::vector<double>fillArrayManual() {
 
 std::vector<double>fillArrayRandom() {
 	std::vector<double>arr;
-	int lowestRandomNumber = 0;
-	int highestRandomNumber = 0;
-	std::cout << "size: " << std::endl << "> ";
+	double lowestRandomNumber = 0;
+	double highestRandomNumber = 0;
+	cout << "size: " << endl << "> ";
 	int	size = inputInt();
-	std::cout << "lowest" << std::endl << "> ";
+	cout << "lowest" << endl << "> ";
 	lowestRandomNumber = inputDouble();
 	do {
-		std::cout << "Enter highest random number: " << std::endl;
+		cout << "Enter highest random number: " << endl;
 		highestRandomNumber = inputDouble();
 	} while (highestRandomNumber < lowestRandomNumber);
-	int range = (highestRandomNumber - lowestRandomNumber) + 1;
-
-	srand(static_cast<double>(time(NULL)));
+	
+	std::uniform_real_distribution<double>unif(lowestRandomNumber, highestRandomNumber);
+	std::default_random_engine re;
 
 	for (int i = 0; i < size; i++) {
-		double input = lowestRandomNumber + rand() % range;
-		arr.push_back(input);
+		arr.push_back(unif(re));
 	}
 
 	return arr;
@@ -74,6 +74,6 @@ std::vector<double>fillArrayRandom() {
 
 //Меню выбора заполнения массива
 std::vector<double> arrayFillMethodMenu() {
-
-
+	std::vector<double>temp;
+	return temp;
 }
