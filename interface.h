@@ -1,6 +1,10 @@
 #pragma once
 #include<vector>
 #include <iostream>
+#include <random>
+
+
+
 
 void giveWelcomeMenu();
 int inputInt();

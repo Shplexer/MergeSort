@@ -1,4 +1,5 @@
 #include "Files.h"
+#include "interface.h"
 
 using namespace std;
 using namespace filesystem;
@@ -36,7 +37,6 @@ void outputToFile(vector<double>& vec) {
 string OpenFile() {
 	bool isExit = false;
 	bool isEmpty = false;
-	fileNameChoice choice;
 	string fileName;
 	fstream fileStream;
 	cout << "Укажите имя файла: ";
