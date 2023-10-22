@@ -1,15 +1,15 @@
-// chto eto takoe AAAAAAAAAAAAAAAAAAAфффф
 #include "Files.h"
 
 using namespace std;
 using namespace filesystem;
 
-vector<double>& inputFromFile(vector<double>& vec) {
+void inputFromFile(vector<double>& vec) {
 	bool isCorrect = false;
+	string fileName;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl
 		 << "Данные в файле должны быть представлены в виде, например: '-5 34 7 18' " << endl;
 	while (true) {
-		string fileName = OpenFile();
+		fileName = OpenFile();
 		//size = CalculateSize(fileName);
 		isCorrect = GetValueFromFile(vec, fileName);
 		if (isCorrect) break;
@@ -17,6 +17,20 @@ vector<double>& inputFromFile(vector<double>& vec) {
 			cout << "Данные в файле некорректны, выберите другой файл или измените содержание текущего и попробуйте снова" << endl;
 		}
 	}
+	cout << "Данные получены и записаны в массив!" << endl;
+}
+
+void outputToFile(vector<double>& vec) {
+	bool isCorrect = false;
+	string fileName;
+	fstream fileStream;
+	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl;
+	fileName = OpenFile();
+	fileStream.open(fileName);
+	for (int i = 0; i < vec.size(); i++) {
+		fileStream << vec[i] << " ";
+	}
+	cout << "Данные записаны!" << endl;
 }
 
 string OpenFile() {
@@ -73,7 +87,7 @@ string FileNameCheck(string inputName) {
 
 bool GetValueFromFile(vector<double>& vec, string fileName) {
 	double tempDouble;
-	bool isCorrect;
+	bool isCorrect = true;
 	fstream fileStream;
 	fileStream.open(fileName);
 	while (true) {
@@ -87,30 +101,6 @@ bool GetValueFromFile(vector<double>& vec, string fileName) {
 		}
 		vec.push_back(tempDouble);
 	}
-
+	fileStream.close();
 	return isCorrect;
 }
-/*
-int CalculateSize(string fileName) {
-	string line;
-	bool isTrue = false, exitFlag = true;
-	int size = 0;
-	ifstream tempFile(fileName);
-
-	if (tempFile.is_open()) {
-		while (true) {
-			getline(tempFile, line, ' ');
-			for (int i = 0; i < line.size(); i++) {
-				if (line[i] == '\n'|| tempFile.eof()) {
-					isTrue = true;
-					break;
-				}
-			}
-			size++;
-			if (isTrue) { break; }
-		}
-	}
-	tempFile.close();
-	return size;
-}
-*/
