@@ -6,8 +6,6 @@
 #include <filesystem>
 #include "interface.h"
 
-using namespace std;
-using namespace filesystem;
 
 enum class fileNameChoice { change = 1, exit };
 enum class errChoice { change = 1, add, keep };

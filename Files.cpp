@@ -1,6 +1,9 @@
 // chto eto takoe AAAAAAAAAAAAAAAAAAAфффф
 #include "Files.h"
 
+using namespace std;
+using namespace filesystem;
+
 vector<double>& inputFromFile(vector<double>& vec) {
 	bool isCorrect = false;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl
