@@ -132,12 +132,14 @@
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sort.cpp" />
+    <ClCompile Include="tester.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="files.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="sort.h" />
+    <ClInclude Include="tester.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

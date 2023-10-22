@@ -1,7 +1,7 @@
 #include "main.h"
 #include "interface.h"
 #include "sort.h"
-
+#include "tester.h"
 // Эта функция является точкой входа в программу
 int main() {
     // Объявляем пустой вектор для хранения чисел с плавающей точкой
