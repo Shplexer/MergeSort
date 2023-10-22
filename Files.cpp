@@ -85,7 +85,6 @@ string FileNameCheck(string inputName) {
 			cout << "Ошибка! Проверьте название файла и попробуйте снова:" << endl;
 			getline(cin >> ws, inputName);
 			exitFlag = false;
-			break;
 		}
 	} while (!exitFlag);
 	return inputName;
