@@ -28,41 +28,21 @@ vector<double> inputFromFile() {
 void outputToFile(vector<double>& vec) {
 	bool isCorrect = false;
 	string fileName;
-	fstream fileStream;
+	ofstream fileStream;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl;
-	fileName = OutputFileCheck();
+	cout << "Укажите имя файла: ";
+	getline(cin >> ws, fileName);
+	fileName = FileNameCheck(fileName);
+
 	fileStream.open(fileName);
+	if (fileStream.is_open())
+		cout << "KEK" << endl;
+
 	for (int i = 0; i < vec.size(); i++) {
 		fileStream << vec[i] << " ";
 	}
 	cout << "Данные записаны!" << endl;
-}
-
-string OutputFileCheck() {
-	bool isExit = false;
-	string fileName;
-	fstream fileStream;
-
-	cout << "Укажите имя файла: ";
-	getline(cin >> ws, fileName);
-	do {
-		isExit = false;
-		fileName = FileNameCheck(fileName);
-		fileStream.open(fileName);
-
-		//Проверка на существование файла
-		if (!fileStream.is_open()) {
-			cout << endl << "Файл с таким именем не существует! Измените имя файла:" << endl;
-			getline(cin >> ws, fileName);
-			fileName = FileNameCheck(fileName);
-			isExit = false;
-		}
-		else if (fileStream.is_open()) {
-			isExit = true;
-		}
-	}while (!isExit);
 	fileStream.close();
-	return fileName;
 }
 
 string InputFileCheck() {
@@ -115,6 +95,13 @@ string FileNameCheck(string fileName) {
 			exitFlag = false;
 		}
 	} while (!exitFlag);
+	string temp = "";
+	for (auto i = fileName.size() - 4; i < fileName.size(); i++) {
+		temp = temp + fileName[i];
+	}
+	if (temp != ".txt") {
+		fileName = fileName + ".txt";
+	}
 	return fileName;
 }
 
