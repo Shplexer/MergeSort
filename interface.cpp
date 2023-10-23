@@ -98,7 +98,7 @@ void saveToFile(vector<double> arr) {
 	bool exitFlag = false;
 	cout << "Хотите сохранить массив в файл? Выберите один из вариантов:" << endl
 		<< "1. Да" << endl
-		<< "2. Нет";
+		<< "2. Нет" << endl;
 	cout << "> ";
 	saveChoice choice = static_cast<saveChoice>(inputInt());
 	while (!exitFlag) {
