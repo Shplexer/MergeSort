@@ -1,11 +1,14 @@
+#include <windows.h>
 #include "main.h"
 #include "interface.h"
 #include "sort.h"
 #include "tester.h"
 // Эта функция является точкой входа в программу
 int main() {
+
     // Добавляем возможность использования киррилицы в консоли
-    setlocale(LC_CTYPE, "Russian");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     // Объявляем пустой вектор для хранения чисел с плавающей точкой
     std::vector<double> array;
     // Устанавливаем флаг выхода в значение false
