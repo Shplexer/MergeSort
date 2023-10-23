@@ -24,9 +24,11 @@ int main() {
             array = arrayFillMethodMenu();
             // Сортируем вектор с помощью функции mergeSort
             mergeSort(array, 0, static_cast<int>(array.size()) - 1);
+            exitFlag = true;
             break;
         case welcomeMenuChoice::test:
             test();
+            exitFlag = true;
             break;
         case welcomeMenuChoice::exit:
             // Завершаем программу
