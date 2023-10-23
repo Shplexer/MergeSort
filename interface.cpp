@@ -3,48 +3,48 @@
 #include "files.h"
 #include "main.h"
 
-//РЁР°Р±Р»РѕРЅ РґР»СЏ РїСЂРѕРІРµСЂРєРё С‚РёРїР° РІРІРѕРґР°
+//Шаблон для проверки типа ввода
 template<typename T>
 T checkInput() {
 	T userInput{};
 	while (!(cin >> userInput)) {
-		cin.clear();											//РЎР±СЂРѕСЃ С„Р»Р°РіР° РѕС€РёР±РєРё
-		cin.ignore(INT_MAX, '\n');								//РћС‡РёСЃС‚РєР° Р±СѓС„С„РµСЂР° РЅР° РєРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ, СЂР°РІРЅРѕРµ INT_MAX, РёР»Рё РґРѕ '\n'
-		cout << "РћС€РёР±РєР°. Р’РІРµРґС‘РЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°" << endl;
+		cin.clear();											//Сброс флага ошибки
+		cin.ignore(INT_MAX, '\n');								//Очистка буффера на колличество символов, равное INT_MAX, или до '\n'
+		cout << "Ошибка. Введёно некорректное значение, попробуйте снова" << endl;
 	}
 	cin.ignore(INT_MAX, '\n');
 	return userInput;
 }
 
-//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° С‡РёСЃРµР»
+//Функция для ввода чисел
 int inputInt() {
 	return checkInput<int>();
 }
 
-//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° РґСЂРѕР±РЅС‹С… С‡РёСЃРµР»
+//Функция для ввода дробных чисел
 double inputDouble() {
 	return checkInput<double>();
 }
 
-//РџСЂРёРІРµС‚СЃС‚РІРµРЅРЅРѕРµ РјРµРЅСЋ
+//Приветственное меню
 void giveWelcomeMenu() {
-	cout	<< "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ РїСЂРѕРіСЂР°РјРјСѓ! " << endl
-				<< "РќР°Р·РІР°РЅРёРµ: Р›Р°Р±РѕСЂРѕС‚РѕРЅР°СЏ Nв„– 2" << endl
-				<< "Р’С‹РїРѕР»РЅРёР»Рё: Р‘РµР»РёРєРѕРІ РР»СЊСЏ, РћСЂРµС…РѕРІ Р”Р°РЅРёРёР», Р›РµС€СѓРєРѕРІ РќРёРєРёС‚Р°" << endl
-				<< "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РІР°СЂРёР°РЅС‚РѕРІ, РїСЂРµРґСЃС‚РІР°Р»РµРЅРЅС‹С… РЅРёР¶Рµ, Рё РЅР°Р±РµСЂРёС‚Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ С†РёС„СЂСѓ:" << endl;
-	cout	<< "1. РќР°С‡Р°С‚СЊ СЂР°Р±РѕС‚Сѓ" << endl
-				<< "2. Р—Р°РїСѓСЃС‚РёС‚СЊ С‚РµСЃС‚ РїСЂРѕРіСЂР°РјРјС‹" << endl
-				<< "3. Р’С‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹" << endl
+	cout	<< "Добро пожаловать в программу! " << endl
+				<< "Название: Лаборотоная N№ 2" << endl
+				<< "Выполнили: Беликов Илья, Орехов Даниил, Лешуков Никита" << endl
+				<< "Пожалуйста, выберите один вариантов, предстваленных ниже, и наберите соответствующую цифру:" << endl;
+	cout	<< "1. Начать работу" << endl
+				<< "2. Запустить тест программы" << endl
+				<< "3. Выйти из программы" << endl
 				<< "> ";
 }
 
 std::vector<double>fillArrayManual() {
 	std::vector<double>arr;
-	cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ: " << endl
+	cout << "Введите размер: " << endl
 		 << "> ";
 	int	size = inputInt();
 	for (int i = 0; i < size; i++) {
-		cout << "Р’РІРµРґРёС‚Рµ " << i+1 << "-С‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°" << endl
+		cout << "Введите " << i+1 << "-ый элемент массива" << endl
 			 << "> ";
 		double input = inputDouble();
 		arr.push_back(input);
@@ -57,14 +57,14 @@ std::vector<double>fillArrayRandom() {
 	std::vector<double>arr;
 	double lowestRandomNumber = 0;
 	double highestRandomNumber = 0;
-	cout << "РЈРєР°Р¶РёС‚Рµ СЂР°Р·РјРµСЂ: " << endl
+	cout << "Укажите размер: " << endl
 		 << "> ";
 	int	size = inputInt();
-	cout << "РЈРєР°Р¶РёС‚Рµ РјРёРЅРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРµ С‡РёСЃР»Рѕ: " << endl
+	cout << "Укажите минимально допустимое число: " << endl
 		 << "> ";
 	lowestRandomNumber = inputDouble();
 	do {
-		cout << "РЈРєР°Р¶РёС‚Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРµ С‡РёСЃР»Рѕ: " << endl
+		cout << "Укажите максимально допустимое число: " << endl
 			 << "> ";
 		highestRandomNumber = inputDouble();
 	} while (highestRandomNumber < lowestRandomNumber);
@@ -79,9 +79,9 @@ std::vector<double>fillArrayRandom() {
 	return arr;
 }
 
-//Р’С‹РІРѕРґ РјР°СЃСЃРёРІР°
+//Вывод массива
 void giveArrayToUser(std::vector<double> array) {
-	cout << "РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ: [";
+	cout << "Отсортированный массив: [";
 	for (int i = 0; i < array.size(); i++) {
 		cout << array[i];
 		if (i != array.size() - 1) {
@@ -96,9 +96,9 @@ void giveArrayToUser(std::vector<double> array) {
 
 void saveToFile(vector<double> arr) {
 	bool exitFlag = false;
-	cout << "РҐРѕС‚РёС‚Рµ СЃРѕС…СЂР°РЅРёС‚СЊ РјР°СЃСЃРёРІ РІ С„Р°Р№Р»? Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РІР°СЂРёР°РЅС‚РѕРІ:" << endl
-		<< "1. Р”Р°" << endl
-		<< "2. РќРµС‚" << endl;
+	cout << "Хотите сохранить массив в файл? Выберите один из вариантов:" << endl
+		<< "1. Да" << endl
+		<< "2. Нет" << endl;
 	cout << "> ";
 	saveChoice choice = static_cast<saveChoice>(inputInt());
 	while (!exitFlag) {
@@ -108,13 +108,13 @@ void saveToFile(vector<double> arr) {
 			exitFlag = true;
 			break;
 		case saveChoice::no:
-			cout << "Р¤Р°Р№Р» РЅРµ Р±СѓРґРµС‚ Р·Р°РїРёСЃР°РЅ" << endl;
+			cout << "Файл не будет записан" << endl;
 			exitFlag = true;
 			break;
 
 
 		default:
-			cout << "РўР°РєРѕРіРѕ РІР°СЂРёР°РЅС‚Р° РЅРµС‚, РІС‹Р±РµСЂРёС‚Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№" << endl;
+			cout << "Такого варианта нет, выберите существующий" << endl;
 			exitFlag = false;
 			break;
 
@@ -126,13 +126,13 @@ void saveToFile(vector<double> arr) {
 }
 
 
-//РњРµРЅСЋ РІС‹Р±РѕСЂР° Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР°
+//Меню выбора заполнения массива
 std::vector<double> arrayFillMethodMenu() {
 	std::vector<double>temp;
 	bool exitFlag = false;
-	cout << "РЈРєР°Р¶РёС‚Рµ РѕРґРёРЅ РёР· РїСЂРµРґСЃС‚РІР°Р»РµРЅРЅС‹С… СЃРїРѕСЃРѕР±РѕРІ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР°: " << endl;
-	cout << "1. Р’СЂСѓС‡РЅСѓСЋ" << endl
-		<< "2. РЎР»СѓС‡Р°РЅР№РЅС‹РјРё С‡РёСЃР»Р°РјРё" << endl
+	cout << "Укажите один из предстваленных способов заполнения массива: " << endl;
+	cout << "1. Вручную" << endl
+		<< "2. Случанйными числами" << endl
 		<< "> ";
 
 	arrayFillMethodChoice choice = static_cast<arrayFillMethodChoice>(inputInt());
@@ -147,14 +147,14 @@ std::vector<double> arrayFillMethodMenu() {
 			exitFlag = true;
 			break;
 		case arrayFillMethodChoice::file:
-			cout << "РЈРєР°Р¶РёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° СЃ РґР°РЅРЅС‹РјРё:" << endl
+			cout << "Укажите имя файла с данными:" << endl
 				 << "> ";
 			temp = inputFromFile();
 			exitFlag = true;
 			break;
 
 		default:
-			cout << "РўР°РєРѕРіРѕ РІР°СЂРёР°РЅС‚Р° РЅРµС‚, РІС‹Р±РµСЂРёС‚Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№" << endl;
+			cout << "Такого варианта нет, выберите существующий" << endl;
 			exitFlag = false;
 			break;
 		}
