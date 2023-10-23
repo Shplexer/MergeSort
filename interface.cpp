@@ -80,6 +80,13 @@ std::vector<double>fillArrayRandom() {
 }
 
 
+void giveArrayToUser() {
+
+
+
+}
+
+
 //Меню выбора заполнения массива
 std::vector<double> arrayFillMethodMenu() {
 	std::vector<double>temp;
