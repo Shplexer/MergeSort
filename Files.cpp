@@ -13,7 +13,7 @@ vector<double>& inputFromFile() {
 
 	// Зацикленная попытка получения данных из файла для исключения возможных ошибок
 	while (true) {
-		fileName = OpenFile();
+		fileName = InputFileCheck();
 		//size = CalculateSize(fileName);
 		isCorrect = GetValueFromFile(vec, fileName);
 		if (isCorrect) break;
@@ -30,7 +30,7 @@ void outputToFile(vector<double>& vec) {
 	string fileName;
 	fstream fileStream;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl;
-	fileName = OpenFile();
+	fileName = OutputFileCheck();
 	fileStream.open(fileName);
 	for (int i = 0; i < vec.size(); i++) {
 		fileStream << vec[i] << " ";
@@ -38,7 +38,33 @@ void outputToFile(vector<double>& vec) {
 	cout << "Данные записаны!" << endl;
 }
 
-string OpenFile() {
+string OutputFileCheck() {
+	bool isExit = false;
+	string fileName;
+	fstream fileStream;
+
+	cout << "Укажите имя файла: ";
+	getline(cin >> ws, fileName);
+	do {
+		isExit = false;
+		fileName = FileNameCheck(fileName);
+		fileStream.open(fileName);
+
+		if (!fileStream.is_open()) {
+			cout << endl << "Файл с таким именем не существует! Измените имя файла:" << endl;
+			getline(cin >> ws, fileName);
+			fileName = FileNameCheck(fileName);
+			isExit = false;
+		}
+		else if (fileStream.is_open()) {
+			isExit = true;
+		}
+	}while (!isExit);
+	fileStream.close();
+	return fileName;
+}
+
+string InputFileCheck() {
 	bool isExit = false;
 	bool isEmpty = false;
 	string fileName;
@@ -67,7 +93,6 @@ string OpenFile() {
 		}
 		//Корректное открытие файла
 		else if (fileStream.is_open() && !isEmpty) {
-			cout << "Файл открыт!" << endl;
 			isExit = true;
 		}
 	} while (!isExit);
@@ -75,21 +100,65 @@ string OpenFile() {
 	return fileName;
 }
 
-string FileNameCheck(string inputName) {
+string SaveFileCheck1(string saveFileName) {
+	fstream checkStream;
+	bool isExit;
+	bool isAllExit;
+	do {
+		isAllExit = false;
+		checkStream.open(saveFileName);
+		//error_code ec{};
+		if (!checkStream.is_open()) {
+			cout << "Укажите имя файла: ";
+			saveFileName = FileNameCheck(StringInput());
+		}
+		else {
+			cout << "Имя открытого файла: " << saveFileName << endl <<
+				"Данный файл уже используется! Выберете из представленных пунктов:" << endl <<
+				"1. Сохранить в другой файл" << endl <<
+				"2. Перезаписать данный файл" << endl;
+			do {
+				isExit = true;
+				errChoice choice = static_cast<errChoice>(CheckInputInt());
+				switch (choice)
+				{
+				case errChoice::change:
+					cout << "Укажите имя файла: ";
+					saveFileName = FileNameCheck(StringInput());
+					break;
+				case errChoice::keep:
+					isAllExit = true;
+					break;
+				default:
+					isExit = false;
+					break;
+				}
+			} while (!isExit);
+		}
+		checkStream.close();
+		checkStream.open(saveFileName);
+		if (!checkStream.is_open() || isAllExit)
+			break;
+		checkStream.close();
+	} while (true);
+	return saveFileName;
+}
+
+string FileNameCheck(string fileName) {
 	error_code ec{};
 	bool exitFlag;
 
 	//Цикл до получения корректного имени файла
 	do {
 		exitFlag = true;
-		if (!ifstream(inputName)) continue;
-		if (!is_regular_file(inputName, ec)) {
+		if (!ifstream(fileName)) continue;
+		if (!is_regular_file(fileName, ec)) {
 			cout << "Ошибка! Проверьте название файла и попробуйте снова:" << endl;
-			getline(cin >> ws, inputName);
+			getline(cin >> ws, fileName);
 			exitFlag = false;
 		}
 	} while (!exitFlag);
-	return inputName;
+	return fileName;
 }
 
 bool GetValueFromFile(vector<double>& vec, string fileName) {
