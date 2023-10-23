@@ -4,6 +4,8 @@
 #include "tester.h"
 // Эта функция является точкой входа в программу
 int main() {
+    // Добавляем возможность использования киррилицы в консоли
+    setlocale(LC_CTYPE, "Russian");
     // Объявляем пустой вектор для хранения чисел с плавающей точкой
     std::vector<double> array;
     // Устанавливаем флаг выхода в значение false
@@ -22,10 +24,9 @@ int main() {
             array = arrayFillMethodMenu();
             // Сортируем вектор с помощью функции mergeSort
             mergeSort(array, 0, static_cast<int>(array.size()) - 1);
-            exitFlag = true;
             break;
         case welcomeMenuChoice::test:
-            exitFlag = true;
+            test();
             break;
         case welcomeMenuChoice::exit:
             // Завершаем программу
@@ -35,7 +36,7 @@ int main() {
             // Если пользователь выбирает недопустимую опцию
         default:
             // Выводим сообщение об ошибке
-            cout << "cringe" << endl; //ПОМЕНЯТЬ
+            cout << "Такого варианта нет, выберите существующий" << endl; //ПОМЕНЯТЬ
             exitFlag = false;
             break;
         }

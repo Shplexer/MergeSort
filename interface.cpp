@@ -44,6 +44,8 @@ std::vector<double>fillArrayManual() {
 		 << "> ";
 	int	size = inputInt();
 	for (int i = 0; i < size; i++) {
+		cout << "Введите " << i+1 << "-ый элемент массива" << endl
+			 << "> ";
 		double input = inputDouble();
 		arr.push_back(input);
 	}
@@ -81,5 +83,29 @@ std::vector<double>fillArrayRandom() {
 //Меню выбора заполнения массива
 std::vector<double> arrayFillMethodMenu() {
 	std::vector<double>temp;
+	bool exitFlag = false;
+	cout << "Укажите один из предстваленных способов заполнения массива: " << endl;
+	cout << "1. Вручную" << endl
+		<< "2. Случанйными числами" << endl
+		<< "> ";
+
+	arrayFillMethodChoice choice = static_cast<arrayFillMethodChoice>(inputInt());
+	while (!exitFlag) {
+		switch (choice) {
+		case arrayFillMethodChoice::manual:
+			temp = fillArrayManual();
+			exitFlag = true;
+			break;
+		case arrayFillMethodChoice::random:
+			temp = fillArrayRandom();
+			exitFlag = true;
+			break;
+
+
+		default:
+			cout << "Такого варианта нет, выберите существующий" << endl;
+			break;
+		}
+	}
 	return temp;
 }
