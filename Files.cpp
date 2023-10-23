@@ -34,8 +34,6 @@ void outputToFile(vector<double>& vec) {
 	fileName = FileNameCheck(fileName);
 
 	fileStream.open(fileName);
-	if (fileStream.is_open())
-		cout << "KEK" << endl;
 
 	for (int i = 0; i < vec.size(); i++) {
 		fileStream << vec[i] << " ";
