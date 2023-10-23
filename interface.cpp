@@ -79,8 +79,8 @@ std::vector<double>fillArrayRandom() {
 	return arr;
 }
 
-
-void giveArrayToUser(std::vector<double>& array) {
+//Вывод массива
+void giveArrayToUser(std::vector<double> array) {
 	cout << "Отсортированный массив: [";
 	for (int i = 0; i < array.size(); i++) {
 		cout << array[i];
@@ -90,6 +90,36 @@ void giveArrayToUser(std::vector<double>& array) {
 		else {
 			cout << "]" << endl;
 		}
+	}
+}
+
+
+void saveToFile(vector<double> arr) {
+	bool exitFlag = false;
+	cout << "Хотите сохранить массив в файл? Выберите один из вариантов:" << endl
+		<< "1. Да" << endl
+		<< "2. Нет";
+	cout << "> ";
+	saveChoice choice = static_cast<saveChoice>(inputInt());
+	while (!exitFlag) {
+		switch (choice) {
+		case saveChoice::yes:
+			outputToFile(arr);
+			exitFlag = true;
+			break;
+		case saveChoice::no:
+			cout << "Файл не будет записан" << endl;
+			exitFlag = true;
+			break;
+
+
+		default:
+			cout << "Такого варианта нет, выберите существующий" << endl;
+			exitFlag = false;
+			break;
+
+		}
+
 	}
 
 
@@ -125,6 +155,7 @@ std::vector<double> arrayFillMethodMenu() {
 
 		default:
 			cout << "Такого варианта нет, выберите существующий" << endl;
+			exitFlag = false;
 			break;
 		}
 	}

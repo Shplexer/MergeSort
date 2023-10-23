@@ -7,7 +7,8 @@
 int main() {
 
     // Добавляем возможность использования киррилицы в консоли
-    setlocale(LC_ALL, "RUSSIAN");
+    setlocale(LC_ALL, "Russian");
+    cout << "ауп" << "poop" << endl;
     // Объявляем пустой вектор для хранения чисел с плавающей точкой
     std::vector<double> array;
     // Устанавливаем флаг выхода в значение false
@@ -26,6 +27,7 @@ int main() {
             array = arrayFillMethodMenu();
             // Сортируем вектор с помощью функции mergeSort
             mergeSort(array, 0, static_cast<int>(array.size()) - 1);
+            saveToFile(array);
             exitFlag = true;
             break;
         case welcomeMenuChoice::test:

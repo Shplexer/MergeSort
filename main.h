@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <locale.h>
+#include <clocale>
 #include <cstdlib>
 
 using std::cin;

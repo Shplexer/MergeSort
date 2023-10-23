@@ -1,6 +1,7 @@
 #include "tester.h"
 #include "sort.h"
 #include "main.h"
+#include "interface.h"
 
 //Проверка сортировки
 void test() {
@@ -13,13 +14,13 @@ void test() {
 	mergeSort(testVector, 0, static_cast<int>(testVector.size()) - 1);
 	//сравнение отсортированного и контрольного массивов
 	if (testVector == controlVector) {
-		cout << "\033[36m" << "GOOD" << "\033[0m" << endl;
+		cout << "\033[36m" << "Выполнено корректно!" << "\033[0m" << endl;
 	}
 	else {
-		cout << "\033[31m" << "BAD" << "\033[0m" << endl;
-		cout << "INPUT ARRAY" << endl;
-		//вывести testVector
-		cout << "CONTROL ARRAY" << endl;
-		//вывести controlVector
+		cout << "\033[31m" << "Произошла ошибка!" << "\033[0m" << endl;
+		cout << "Полученный массив" << endl;
+		giveArrayToUser(testVector);
+		cout << "Исходный массив" << endl;
+		giveArrayToUser(controlVector);
 	}
 }

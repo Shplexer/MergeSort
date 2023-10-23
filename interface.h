@@ -9,6 +9,8 @@
 void giveWelcomeMenu();
 int inputInt();
 double inputDouble();
+void giveArrayToUser(std::vector<double>);
+void saveToFile(std::vector<double>);
 std::vector<double>arrayFillMethodMenu();
 std::vector<double>fillArrayManual();
 std::vector<double>fillArrayRandom();
@@ -16,3 +18,4 @@ std::vector<double>fillArrayRandom();
 
 enum class welcomeMenuChoice{start = 1, test, exit};
 enum class arrayFillMethodChoice { manual = 1, random, file };
+enum class saveChoice{yes = 1, no};
