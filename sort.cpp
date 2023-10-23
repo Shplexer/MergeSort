@@ -71,5 +71,4 @@ void mergeSort(std::vector<double>& array, int left, int right) {
         // Слияние двух подмассивов
         merge(array, left, mid, right);
     }
-    giveArrayToUser(array);
 }

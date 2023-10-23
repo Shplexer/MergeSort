@@ -4,7 +4,7 @@
 using namespace std;
 using namespace filesystem;
 
-vector<double>& inputFromFile() {
+vector<double> inputFromFile() {
 	vector<double> vec;
 	bool isCorrect = false;
 	string fileName;

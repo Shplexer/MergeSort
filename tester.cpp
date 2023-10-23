@@ -14,6 +14,7 @@ void test() {
 	mergeSort(testVector, 0, static_cast<int>(testVector.size()) - 1);
 	//сравнение отсортированного и контрольного массивов
 	if (testVector == controlVector) {
+		giveArrayToUser(testVector);
 		cout << "\033[36m" << "¬ыполнено корректно!" << "\033[0m" << endl;
 	}
 	else {
