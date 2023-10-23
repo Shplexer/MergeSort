@@ -133,7 +133,7 @@ std::vector<double> arrayFillMethodMenu() {
 	cout << "Укажите один из предстваленных способов заполнения массива: " << endl;
 	cout << "1. Вручную" << endl
 		 << "2. Случанйными числами" << endl
-		 << "3. Из файла"
+		 << "3. Из файла" << endl
 		<< "> ";
 
 	arrayFillMethodChoice choice = static_cast<arrayFillMethodChoice>(inputInt());
