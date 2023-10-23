@@ -50,6 +50,7 @@ string OutputFileCheck() {
 		fileName = FileNameCheck(fileName);
 		fileStream.open(fileName);
 
+		//Проверка на существование файла
 		if (!fileStream.is_open()) {
 			cout << endl << "Файл с таким именем не существует! Измените имя файла:" << endl;
 			getline(cin >> ws, fileName);
@@ -98,50 +99,6 @@ string InputFileCheck() {
 	} while (!isExit);
 	fileStream.close();
 	return fileName;
-}
-
-string SaveFileCheck1(string saveFileName) {
-	fstream checkStream;
-	bool isExit;
-	bool isAllExit;
-	do {
-		isAllExit = false;
-		checkStream.open(saveFileName);
-		//error_code ec{};
-		if (!checkStream.is_open()) {
-			cout << "Укажите имя файла: ";
-			saveFileName = FileNameCheck(StringInput());
-		}
-		else {
-			cout << "Имя открытого файла: " << saveFileName << endl <<
-				"Данный файл уже используется! Выберете из представленных пунктов:" << endl <<
-				"1. Сохранить в другой файл" << endl <<
-				"2. Перезаписать данный файл" << endl;
-			do {
-				isExit = true;
-				errChoice choice = static_cast<errChoice>(CheckInputInt());
-				switch (choice)
-				{
-				case errChoice::change:
-					cout << "Укажите имя файла: ";
-					saveFileName = FileNameCheck(StringInput());
-					break;
-				case errChoice::keep:
-					isAllExit = true;
-					break;
-				default:
-					isExit = false;
-					break;
-				}
-			} while (!isExit);
-		}
-		checkStream.close();
-		checkStream.open(saveFileName);
-		if (!checkStream.is_open() || isAllExit)
-			break;
-		checkStream.close();
-	} while (true);
-	return saveFileName;
 }
 
 string FileNameCheck(string fileName) {
