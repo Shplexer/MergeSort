@@ -4,7 +4,7 @@
 using namespace std;
 using namespace filesystem;
 
-vector<double> inputFromFile() {
+vector<double>& inputFromFile() {
 	vector<double> vec;
 	bool isCorrect = false;
 	string fileName;
@@ -26,6 +26,7 @@ vector<double> inputFromFile() {
 }
 
 void outputToFile(vector<double>& vec) {
+	bool isCorrect = false;
 	string fileName;
 	fstream fileStream;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl;
