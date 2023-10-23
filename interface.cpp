@@ -94,7 +94,7 @@ void giveArrayToUser(std::vector<double> array) {
 }
 
 
-void saveToFile(vector<double> arr) {
+void saveToFileMenu(vector<double> arr) {
 	bool exitFlag = false;
 	cout << "Хотите сохранить массив в файл? Выберите один из вариантов:" << endl
 		<< "1. Да" << endl

@@ -26,7 +26,6 @@ vector<double> inputFromFile() {
 }
 
 void outputToFile(vector<double>& vec) {
-	bool isCorrect = false;
 	string fileName;
 	ofstream fileStream;
 	cout << "Имя файла дожно быть представлено в формате ***.txt" << endl;

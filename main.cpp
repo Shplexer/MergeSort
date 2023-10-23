@@ -27,7 +27,7 @@ int main() {
             // Сортируем вектор с помощью функции mergeSort
             mergeSort(array, 0, static_cast<int>(array.size()) - 1);
             giveArrayToUser(array);
-            saveToFile(array);
+            saveToFileMenu(array);
             exitFlag = true;
             break;
         case welcomeMenuChoice::test:

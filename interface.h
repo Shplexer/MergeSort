@@ -10,7 +10,7 @@ void giveWelcomeMenu();
 int inputInt();
 double inputDouble();
 void giveArrayToUser(std::vector<double>);
-void saveToFile(std::vector<double>);
+void saveToFileMenu(std::vector<double>);
 std::vector<double>arrayFillMethodMenu();
 std::vector<double>fillArrayManual();
 std::vector<double>fillArrayRandom();
