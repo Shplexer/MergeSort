@@ -80,8 +80,17 @@ std::vector<double>fillArrayRandom() {
 }
 
 
-void giveArrayToUser() {
-
+void giveArrayToUser(std::vector<double>& array) {
+	cout << "Отсортированный массив: [";
+	for (int i = 0; i < array.size(); i++) {
+		cout << array[i];
+		if (i != array.size() - 1) {
+			cout << ", ";
+		}
+		else {
+			cout << "]" << endl;
+		}
+	}
 
 
 }
@@ -107,7 +116,12 @@ std::vector<double> arrayFillMethodMenu() {
 			temp = fillArrayRandom();
 			exitFlag = true;
 			break;
-
+		case arrayFillMethodChoice::file:
+			cout << "Укажите имя файла с данными:" << endl
+				 << "> ";
+			temp = inputFromFile();
+			exitFlag = true;
+			break;
 
 		default:
 			cout << "Такого варианта нет, выберите существующий" << endl;

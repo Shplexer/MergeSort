@@ -12,7 +12,7 @@ enum class errChoice { change = 1, add, keep };
 enum class saveDialogChoice { yes = 1, no };
 
 //Для вызова из других частей программы:
-void inputFromFile(vector<double>& vec);	//Получение данных из файла в массив. Получает указатель на массив для записи данных.
+vector<double> inputFromFile();	//Получение данных из файла в массив. Получает указатель на массив для записи данных.
 void outputToFile(vector<double>& vec);		//Вывод массива в файл. Получает указатель на массив, который нужно вывести в файл.
 
 
