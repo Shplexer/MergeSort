@@ -1,0 +1,221 @@
+:root {
+    --errorColor: rgb(230, 57, 70);
+    --textColor: rgb(241, 250, 238);
+    --backroundColor: rgb(69, 123, 157);
+    --darkColor: rgb(29, 53, 87);
+    --lightColor: rgb(168, 218, 220);
+}
+
+body {
+    font-family: Calibri, Arial;
+    background-color: var(--backroundColor);
+    transition: all .5s cubic-bezier(.22, .61, .36, 1);
+    margin: 0;
+}
+
+input[type=text]{
+    border: 3px solid var(--lightColor);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+    margin: 3px;
+}
+input[type=text]:focus{
+    border: 3px solid var(--darkColor);
+}
+#confirmation-overlay{
+    position: fixed;
+    display: none; /*default*/
+    max-width: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(255, 248, 239, 0.475);
+    z-index: 100;
+}
+#confirmation-window{
+    top: 15%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 15%;
+    background-color: var(--backroundColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0.1px solid rgb(136,136,136);
+    border-radius: 10px;
+    box-shadow: 5px 5px 18px rgb(136,136,136);
+    width: auto;
+    height: auto;
+    max-height: 80%;
+    overflow-y: scroll;
+    display: block;
+}
+#confirmation-window p{
+    margin: 5px;
+}
+#confirmation-table {
+    margin-bottom:15px;
+    display: none;
+}
+#header-container{
+    z-index: 80;
+}
+#array-size-input{
+    width: auto;
+}
+#float-inputs-container{
+    margin: 5px;
+}
+.start-pos{
+    color: var(--textColor);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+    bottom: 15%;
+}
+
+.top-left {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    right: auto;
+    font-size: 15px;
+    z-index: 0 !important;
+}
+.top-left h1{
+    margin-bottom: 10px;
+}
+
+.top-left button{
+    font-size: 13px;
+    min-height: 30px;
+    padding: 0;
+}
+.top{
+    position: relative;
+    top: 25%;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    font-size: 30px;
+}
+.top p{
+    margin-bottom: 10px;
+}
+.top button{
+    font-size: 13px;
+    min-height: 30px;
+    padding: 0;
+}
+/*
+#main-container {
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+}
+
+/* CSS */
+button {
+    background-color: var(--darkColor);
+    border-radius: 4px;
+    border: 0;
+    box-shadow: rgba(1, 60, 136, .5) 0 -1px 3px 0 inset, rgba(0, 44, 97, .1) 0 3px 6px 0;
+    box-sizing: border-box;
+    color: var(--textColor);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    min-height: 56px;
+    min-width: 120px;
+    padding: 16px 20px;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    transition: all .5s cubic-bezier(.22, .61, .36, 1);
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgb(51, 89, 143);
+    transform: translateY(-2px);
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+th,td{
+    padding: 0 15px 0 15px ;
+}
+
+
+.clickable{
+    transition: all .3s;
+}
+.clickable:hover {
+    background-color: var(--darkColor);
+}
+
+h1{
+    transition: all .5s cubic-bezier(.22, .61, .36, 1);
+}
+
+
+
+@media (min-width: 768px) {
+    button {
+        padding: 16px 44px;
+        min-width: 150px;
+    }
+}
+
+#error-message {
+    color: var(--errorColor);
+    display: none;
+}
+
+.error {
+    border: 3px solid var(--errorColor) !important; 
+    /*box-shadow: 0 0 10px var(--errorColor);
+    outline: auto;*/
+}
+
+.interface-mode {
+    display: none;
+}
+
+#accept-button {
+    display: none;
+}
+
+#cancel-button {
+    display: none;
+}
