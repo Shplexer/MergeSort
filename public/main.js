@@ -17,6 +17,7 @@ async function getInfo(request, arrId, sortStatus) {
 // Функция для отправки информации на сервер
 async function postInfo(input, request, arrId) {
 	// Отправляем POST запрос с использованием fetch API
+	console.log(`${baseUrl}/${request}?id=${arrId}`, input);
 	const response = await fetch(`${baseUrl}/${request}?id=${arrId}`, {
 		method: 'POST', // Указываем метод запроса
 		headers: {
@@ -99,11 +100,13 @@ async function sendDataHandler(request, arrId) {
 
 			confirmationOverlay.style.display = 'block';
 			document.querySelector('#loader-confirmation').style.display = 'block';
+			
 			inputWindow.querySelectorAll('input').forEach((input, index, array) => {
 				//console.log(input.value);
 				if (!isNaN(parseFloat(input.value))) unsortedArr.push(parseFloat(input.value));
 			})
-			console.log("==>", unsortedArr);
+
+			console.log("==>", unsortedArr, inputWindow);
 			//recievedData = postInfo(arr, request, arrId);
 			//postInfo([0], 'save', arrId);
 			sortedArr = await postInfo(unsortedArr, 'sort', 'unsorted');
@@ -112,14 +115,19 @@ async function sendDataHandler(request, arrId) {
 			console.log(err);
 		}
 		finally {
-			const acceptBtn = document.getElementById('save');
-			const updateBtn = document.getElementById('update');
+			const acceptBtn = createButton('save', 'Сохранить');
+			const updateBtn = createButton('update', 'Обновить');
 			updateBtn.style.display = 'none';
+			const cancelBtn = createButton('cancel', 'Отмена');
+
 			if (request === `update`) {
 				acceptBtn.innerText = 'Добавить новую запись';
 				updateBtn.style.display = 'inline-block';
 				updateBtn.addEventListener('click', () => {
 					confirmationOverlay.style.display = 'none';
+					acceptBtn.remove();
+					updateBtn.remove();
+					cancelBtn.remove();
 					const arrays = [sortedArr, unsortedArr];
 					postInfo(arrays, 'update', arrId);
 					//postInfo([0], 'save', arrId);
@@ -129,15 +137,21 @@ async function sendDataHandler(request, arrId) {
 			}
 			acceptBtn.addEventListener('click', () => {
 				confirmationOverlay.style.display = 'none';
+				acceptBtn.remove();
+				updateBtn.remove();
+				cancelBtn.remove();
 				const arrays = [sortedArr, unsortedArr];
 				postInfo(arrays, request, arrId);
 				//postInfo([0], 'save', arrId);
 			})
-			const cancelBtn = document.getElementById('cancel');
 			cancelBtn.addEventListener('click', () => {
 				confirmationOverlay.style.display = 'none';
 				//postInfo([0], 'save', arrId);
+				acceptBtn.remove();
+				updateBtn.remove();
+				cancelBtn.remove();
 			})
+			document.querySelector('#confirmation-control').append(acceptBtn, updateBtn, cancelBtn);
 			document.querySelector('#loader-confirmation').style.display = 'none';
 
 			const table = confirmationOverlay.querySelector('table');

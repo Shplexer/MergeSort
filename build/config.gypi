@@ -409,7 +409,7 @@
     "globalconfig": "C:\\Users\\danar\\AppData\\Roaming\\npm\\etc\\npmrc",
     "global_prefix": "C:\\Users\\danar\\AppData\\Roaming\\npm",
     "init_module": "C:\\Users\\danar\\.npm-init.js",
-    "local_prefix": "C:\\Users\\danar\\Desktop\\RPC",
+    "local_prefix": "C:\\Users\\danar\\Desktop\\C++\\MergeSort",
     "node_gyp": "C:\\Users\\danar\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
     "npm_version": "10.1.0",
     "prefix": "C:\\Users\\danar\\AppData\\Roaming\\npm",

@@ -95,7 +95,7 @@ async function getFunctions(req, res) {
 }
 
 async function postFunctions(req, res) {
-    const parsel = req.body.parsel;
+    const parsel = req.body.parsel; 
     const request = req.params.request;
     
     let keyName;
@@ -153,7 +153,8 @@ async function postFunctions(req, res) {
                 maxId = 0;
             }
             for (let i = 0; i < unsortedArr.length; i++) {
-
+                console.log(`${keyName}:${maxId + 1}:unsorted`, `${unsortedArr[i]}`)
+                console.log(`${keyName}:${maxId + 1}:sorted`, `${sortedArr[i]}`)
                 client.RPUSH(`${keyName}:${maxId + 1}:unsorted`, `${unsortedArr[i]}`);
                 client.RPUSH(`${keyName}:${maxId + 1}:sorted`, `${sortedArr[i]}`);
             }

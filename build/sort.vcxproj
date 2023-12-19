@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6F40436C-97CC-1411-5B70-A7601805E754}</ProjectGuid>
+    <ProjectGuid>{204B6584-4A00-5FC6-C6C9-4CCC356B9858}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>sort</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
@@ -140,7 +140,7 @@
     <ClCompile Include="..\binding.cpp">
       <ObjectFileName>$(IntDir)\binding.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="C:\Users\danar\Desktop\RPC\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\danar\Desktop\C++\MergeSort\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
