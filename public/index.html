@@ -30,8 +30,8 @@
     <div id="header-container" class="start-pos">  <!-- Заголовок -->
         <h1>Сортировка слиянием</h1>
         <div id=actions>
-            <button id="input" onclick="inputModeOn()">Ввод данных</button> <!-- Нажатие на ввод -->
-            <button id="output" onclick="outputModeON()">Вывод данных</button> <!-- Нажатие на вывод -->
+            <button id="input" onclick="inputModeOn(); setActive(this.id)">Ввод данных</button> <!-- Нажатие на ввод -->
+            <button id="output" onclick="outputModeON(); setActive(this.id)">Вывод данных</button> <!-- Нажатие на вывод -->
         </div>
     </div>
 
@@ -39,9 +39,9 @@
         <div class="interface-mode" id="input-interface">  <!-- Интерфейс для ввода -->
             <div id="input-control">   <!-- Управление вводом -->
                 <p> Выберите метод ввода данных:</p>   <!-- Подзаголовок -->
-                <button id="manual" onclick="manualInput(true)">Ввод вручную</button>  <!-- Нажатие на ввод вручную -->
-                <button id="random" onclick="randomInput()">Сгенерировать</button> <!-- Нажатие на рандобную генерацию -->
-                <button id="load" onclick="getArraysFromDB(true)">Загрузить из БД</button>  <!-- Импорт из БД -->
+                <button id="manual" onclick="manualInput(true); setActive(this.id)">Ввод вручную</button>  <!-- Нажатие на ввод вручную -->
+                <button id="random" onclick="randomInput(); setActive(this.id)">Сгенерировать</button> <!-- Нажатие на рандобную генерацию -->
+                <button id="load" onclick="getArraysFromDB(true); setActive(this.id);">Загрузить из БД</button>  <!-- Импорт из БД -->
                 <p id="error-message"></p>  <!-- Ошибка ввода с заполнением через JS-->
                 <img id="loader-input" style="display:none; margin-left: auto; margin-right: auto;" src="img/index.svg" />  <!-- Иконка загрузки -->
             </div>
@@ -52,6 +52,7 @@
         </div>
         <div class="interface-mode" id="output-interface"> <!-- Вывод данных -->
             <img id="loader-output" style="display:none; margin-left: auto; margin-right: auto;" src="img/index.svg" /> <!-- Красивая загрузка -->
+            <p></p>
             <div id="output-window">  <!-- Окно вывода -->
 
 

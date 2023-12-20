@@ -162,7 +162,10 @@ button {
     transition: all .5s cubic-bezier(.22, .61, .36, 1);
     margin: 5px;
 }
-
+.active{
+    background-color: rgb(51, 89, 143);
+    transform: translateY(-2px);
+}
 button:hover {
     background-color: rgb(51, 89, 143);
     transform: translateY(-2px);

@@ -104,7 +104,7 @@ async function postFunctions(req, res) {
     }else{
         keyName = req.query.keyName;
     }
-    const id = req.query.id.replace(new RegExp(`${keyName}:|:unsorted`, 'g'), '');
+    const id = req.query.id.replace(new RegExp(`${keyName}:|:unsorted|:sorted`, 'g'), '');
 
     if (!parsel) {
         return res.status(400).send({ status: 'failed' });
@@ -115,7 +115,7 @@ async function postFunctions(req, res) {
     
     switch (request) {
         case 'sort':
-            console.log('====>', parsel, keyName);
+            //console.log('====>', parsel, keyName);
             let temp;
             if(keyName !== 'array'){
                 temp = parsel[0];
@@ -137,7 +137,7 @@ async function postFunctions(req, res) {
         case 'update':
             client.DEL(`${keyName}:${id}:unsorted`);
             client.DEL(`${keyName}:${id}:sorted`);
-
+            console.log(`${keyName}:${id}:`);
             for (let i = 0; i < unsortedArr.length; i++) {
                 client.RPUSH(`${keyName}:${id}:unsorted`, `${unsortedArr[i]}`);
                 client.RPUSH(`${keyName}:${id}:sorted`, `${sortedArr[i]}`);
@@ -153,8 +153,8 @@ async function postFunctions(req, res) {
                 maxId = 0;
             }
             for (let i = 0; i < unsortedArr.length; i++) {
-                console.log(`${keyName}:${maxId + 1}:unsorted`, `${unsortedArr[i]}`)
-                console.log(`${keyName}:${maxId + 1}:sorted`, `${sortedArr[i]}`)
+                //console.log(`${keyName}:${maxId + 1}:unsorted`, `${unsortedArr[i]}`)
+                //console.log(`${keyName}:${maxId + 1}:sorted`, `${sortedArr[i]}`)
                 client.RPUSH(`${keyName}:${maxId + 1}:unsorted`, `${unsortedArr[i]}`);
                 client.RPUSH(`${keyName}:${maxId + 1}:sorted`, `${sortedArr[i]}`);
             }

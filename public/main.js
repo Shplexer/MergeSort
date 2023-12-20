@@ -1,5 +1,14 @@
 const baseUrl = "http://localhost:8383";
 
+function setActive(id){
+	let elements = document.querySelectorAll("button");
+	elements.forEach(element => {
+	    if (element.parentElement === document.getElementById(id).parentElement) {
+	        element.classList.remove("active");
+	    }
+	});
+	document.getElementById(id).classList.add("active");
+}
 // Функция для получения информации с сервера
 async function getInfo(request, arrId, sortStatus) {
 	console.time(`get ${request} array:${arrId}:${sortStatus} func`);
@@ -301,7 +310,10 @@ function getArraysFromDB(isEditable) {
 				}
 
 			}
-
+			let text = document.createElement('p');
+			text.textContent = `Доступные массивы:`;
+			text.style.margin = '10px';
+			tableParent.appendChild(text);
 			// Добавляем таблицу в документ или конкретный контейнер
 			tableParent.appendChild(table);
 		}
@@ -456,7 +468,7 @@ function randomInput() {
 	// Функция обработки ввода размера массива
 	function handleArraySizeInput(size) {
 		if (size <= 0) {
-			displayError('Ошибка: размер массива должен быть больше нуля');
+			displayError('Ошибка: размер массива должен содержать только целые числа больше нуля.');
 			isInputValid = false;
 			return;
 		}
